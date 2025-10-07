@@ -1,49 +1,54 @@
 import mongoose from "mongoose";
 
-const itemSchema = new mongoose.Schema({
+const itemSchema = new mongoose.Schema(
+  {
     name: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     image: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     shop: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Shop"
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Shop",
     },
     category: {
-        type: String,
-        enum: ["Snacks",
-            "Main Course",
-            "Desserts",
-            "Pizza",
-            "Burgers",
-            "Sandwiches",
-            "South Indian",
-            "North Indian",
-            "Chinese",
-            "Fast Food",
-            "Others"
-        ],
-        required:true
+      type: String,
+      enum: [
+        "Whiskey",
+        "Beer",
+        "Vodka",
+        "Rum",
+        "Gin",
+        "Brandy",
+        "Wine",
+        "Cocktails",
+        "Liqueurs",
+        "Tequila",
+        "Mead",
+        "Others",
+      ],
+      required: true,
     },
-    price:{
-        type:Number,
-        min:0,
-        required:true
+    price: {
+      type: Number,
+      min: 0,
+      required: true,
     },
-    foodType:{
-        type:String,
-        enum:["veg","non veg"],
-        required:true
+    foodType: {
+      type: String,
+      enum: ["alcohol", "non alcohol"],
+      required: true,
     },
-   rating:{
-    average:{type:Number,default:0},
-    count:{type:Number,default:0}
-   }
-}, { timestamps: true })
+    rating: {
+      average: { type: Number, default: 0 },
+      count: { type: Number, default: 0 },
+    },
+  },
+  { timestamps: true }
+);
 
-const Item=mongoose.model("Item",itemSchema)
-export default Item
+const Item = mongoose.model("Item", itemSchema);
+export default Item;
